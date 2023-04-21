@@ -7,6 +7,7 @@ import openpyxl
 import os
 
 # Load the first workbook and select the first sheet
+#IMPORTANT - update the file path 
 workbook1 = openpyxl.load_workbook('C:\\Users\\Nina.Karzelek\\Desktop\\python\\document_automations\\Excel\\test\\Detail Item Schedule.xlsx')
 sheet1 = workbook1.active
 
@@ -28,6 +29,7 @@ if egs_name_cell:
             continue  # Skip cells above the 'EGS_Name' cell or empty cells
 
         # Find matching cells in all workbooks in the specified directory
+        #IMPORTANT - update the file path 
         directory = 'C:\\Users\\Nina.Karzelek\\Desktop\\python\\document_automations\\Excel\\test'
         for filename in os.listdir(directory):
             if not filename.endswith('.xlsx'):
@@ -44,6 +46,7 @@ else:
     print("Cell with header 'EGS_Name' not found.")
 
 # Generate a single report for all workbooks in the specified directory
+#IMPORTANT - update the file path 
 directory = 'C:\\Users\\Nina.Karzelek\\Desktop\\python\\document_automations\\Excel\\test'
 total_cells_dict = {}  # dictionary to store the total cells count for each workbook
 green_cells_dict = {}  # dictionary to store the green cells count for each workbook
@@ -81,5 +84,6 @@ for filename, total_cells in total_cells_dict.items():
         report_sheet.cell(row=row_num, column=2, value=total_cells)
     report_sheet.cell(row=row_num, column=3, value=green_cells_dict[filename])
     row_num += 1
-
+    
+#IMPORTANT - update the file path 
 report_workbook.save('C:\\Users\\Nina.Karzelek\\Desktop\\python\\document_automations\\Excel\\test\\report.xlsx')
